@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service Definition Biblioteca Virtual'
+define service ZSD_BIBLIOTECA_3505 {
+  expose ZCDS_BIBLIOTECA_3505;
+  expose ZCDS_CLIENTES_3505;
+  expose ZCDS_LIBROS_3505;
+}

@@ -1,0 +1,99 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+    typeName: 'Libro',
+    typeNamePlural: 'Libros',
+    typeImageUrl: 'url',
+    imageUrl: '',
+    title: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: '',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    },
+    description: {
+        type: #STANDARD,
+        label: '',
+        iconUrl: '',
+        criticality: '',
+        criticalityRepresentation: #WITHOUT_ICON,
+        value: '',
+        valueQualifier: '',
+        targetElement: '',
+        url: ''
+    }
+}
+
+@Search.searchable: true
+annotate entity ZCDS_BIBLIOTECA_3505 with
+{
+
+  @UI.facet: [{
+      id: 'DetLibro_',
+      purpose: #STANDARD,
+      position: 10,
+      label: 'Detalles del Libro',
+      type: #COLLECTION  },
+      { id: 'Libro_' ,
+        parentId: 'DetLibro_',
+        label:  'Detalles',
+        type: #FIELDGROUP_REFERENCE,
+        targetQualifier: 'DetLibro_',
+        position: 10      },
+     { id: 'Cliente', label: 'Clientes',
+  type: #LINEITEM_REFERENCE, targetElement:
+  '_clientes', position: 20 }]
+
+
+  @UI.lineItem: [{ position: 10 }]
+////  @UI.fieldGroup: [{qualifier: 'DetLibro_', position: 10 } ]
+  IdLibro;
+////  @UI.fieldGroup: [{qualifier: 'DetLibro_', position: 15 } ]
+////  @UI.selectionField: [{ position: 15 }]
+////  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZCDS_BIBLIOTECA_3505', element: 'BiCateg'} }]
+////  BiCateg;
+  @UI.lineItem: [{ position: 20, importance: #HIGH}]
+  @UI.fieldGroup: [{qualifier: 'DetLibro_', position: 20 } ]
+  @UI.selectionField: [{ position: 10 }]
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZCDS_LIBROS_3505', element: 'Titulo' } }]
+  @Search: { defaultSearchElement: true, ranking: #MEDIUM, fuzzinessThreshold: 0.8 }  
+  Titulo;
+  @UI.lineItem: [{ position: 30  }]
+  @UI.fieldGroup: [{qualifier: 'Libro_', position: 30 } ]
+  @UI.selectionField: [{ position: 20 }]
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZCDS_LIBROS_3505', element: 'Autor'} }]
+  @Search: { defaultSearchElement: true, ranking: #MEDIUM, fuzzinessThreshold: 0.8 }  
+  Autor;
+  @UI.lineItem: [{ position: 40 }]
+  @UI.fieldGroup: [{qualifier: 'DetLibro_', position: 40 } ]
+  Editorial;
+  @UI.fieldGroup: [{qualifier: 'DetLibro_', position: 50 } ]
+  Idioma;
+  @UI.fieldGroup: [{qualifier: 'DetLibro_', position: 60 } ]
+  Paginas;
+  @UI.fieldGroup: [{qualifier: 'DetLibro_', position: 70 } ]
+  Precio;
+  @UI.fieldGroup: [{qualifier: 'DetLibro_', position: 80 } ]
+  Moneda;
+  @UI.fieldGroup: [{qualifier: 'DetLibro_', position: 90 } ]
+  Formato;
+  ////  @UI.adaptationHidden: true
+  ////  Url;
+//   @UI.lineItem: [{ position: 50, importance: #HIGH,
+//      label: 'Estado', criticality: 'Vendidos' }]
+//    estado;
+   @UI.lineItem: [{ position: 50, importance: #HIGH,
+      label: 'Vendidos', criticality: 'Crit_vendido' }]
+    VENDIDOS;
+    @UI.lineItem: [{ position: 60, importance: #HIGH,
+//      label: 'Criticidad', criticality: 2 }]
+       label: 'Criticidad', criticality: 'Crit_vendido' }]
+    crit_vendido;
+  ////  /* Associations */
+  ////  _clientes;
+}

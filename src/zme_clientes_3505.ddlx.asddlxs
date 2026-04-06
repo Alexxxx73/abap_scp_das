@@ -1,0 +1,22 @@
+@Metadata.layer: #CORE
+
+annotate entity ZCDS_CLIENTES_3505 with
+{
+  @UI.lineItem: [{ position: 10 }]
+  id_cliente;
+  @UI.adaptationHidden: true
+  id_libro;
+  @UI.lineItem: [{ position: 20 }]
+  TipoAcceso;
+  @UI.lineItem: [{ position: 30 }]
+  Nombre;
+  @UI.lineItem: [{ position: 40 }]
+  Apellidos;
+  @UI.lineItem: [{ position: 50 }]
+  Email;
+  @UI.lineItem: [{ position: 60 }]
+  Url;
+
+
+
+}
